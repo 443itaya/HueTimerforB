@@ -87,6 +87,8 @@ public class TimerActivity extends AppCompatActivity {
                 sb.setTextColor(0xFFFFFFFF);
                 sb = findViewById(R.id.button_mode3);
                 sb.setTextColor(0xFFFFFFFF);
+                sb = findViewById(R.id.button_mode4);
+                sb.setTextColor(0xFFFFFFFF);
                 sb = findViewById(R.id.off_button);
                 sb.setTextColor(0xFFFFFFFF);
                 conferenceMode = 0;
@@ -102,6 +104,8 @@ public class TimerActivity extends AppCompatActivity {
                 sb = findViewById(R.id.button_mode2);
                 sb.setTextColor(0xFFFF8400);
                 sb = findViewById(R.id.button_mode3);
+                sb.setTextColor(0xFFFFFFFF);
+                sb = findViewById(R.id.button_mode4);
                 sb.setTextColor(0xFFFFFFFF);
                 sb = findViewById(R.id.off_button);
                 sb.setTextColor(0xFFFFFFFF);
@@ -119,9 +123,29 @@ public class TimerActivity extends AppCompatActivity {
                 sb.setTextColor(0xFFFFFFFF);
                 sb = findViewById(R.id.button_mode3);
                 sb.setTextColor(0xFFFF8400);
+                sb = findViewById(R.id.button_mode4);
+                sb.setTextColor(0xFFFFFFFF);
                 sb = findViewById(R.id.off_button);
                 sb.setTextColor(0xFFFFFFFF);
                 conferenceMode = 2;
+                try {
+                    ModeLights(conferenceMode);
+                }catch (IOException e){
+
+                }
+                break;
+            case R.id.button_mode4:
+                sb = findViewById(R.id.button_mode1);
+                sb.setTextColor(0xFFFFFFFF);
+                sb = findViewById(R.id.button_mode2);
+                sb.setTextColor(0xFFFFFFFF);
+                sb = findViewById(R.id.button_mode3);
+                sb.setTextColor(0xFFFFFFFF);
+                sb = findViewById(R.id.button_mode4);
+                sb.setTextColor(0xFFFF8400);
+                sb = findViewById(R.id.off_button);
+                sb.setTextColor(0xFFFFFFFF);
+                conferenceMode = 3;
                 try {
                     ModeLights(conferenceMode);
                 }catch (IOException e){
@@ -134,6 +158,8 @@ public class TimerActivity extends AppCompatActivity {
                 sb = findViewById(R.id.button_mode2);
                 sb.setTextColor(0xFFFFFFFF);
                 sb = findViewById(R.id.button_mode3);
+                sb.setTextColor(0xFFFFFFFF);
+                sb = findViewById(R.id.button_mode4);
                 sb.setTextColor(0xFFFFFFFF);
                 sb = findViewById(R.id.off_button);
                 sb.setTextColor(0xFFFF8400);
@@ -221,6 +247,8 @@ public class TimerActivity extends AppCompatActivity {
                     sb.setTextColor(0xFFFFFFFF);
                     sb = findViewById(R.id.button_mode3);
                     sb.setTextColor(0xFFFFFFFF);
+                    sb = findViewById(R.id.button_mode4);
+                    sb.setTextColor(0xFFFFFFFF);
                     sb = findViewById(R.id.off_button);
                     sb.setTextColor(0xFFFFFFFF);
                     Intent intent1 = new Intent(this, ModeActivity.class);
@@ -238,9 +266,13 @@ public class TimerActivity extends AppCompatActivity {
                     start_flag = 2;
                     sb.setText("Restart");
                 }else if (start_flag == 2){
-                    countNumber = (minute*60+second)*1000;
-                    countDown = new CountDown(countNumber, interval);
-                    countDown.start();
+                    if(countup_flag == 0) {
+                        countNumber = (minute * 60 + second) * 1000;
+                        countDown = new CountDown(countNumber, interval);
+                        countDown.start();
+                    }else{
+                        countDown.countup();
+                    }
                     sb = findViewById(R.id.start_button);
                     sb.setText("Stop");
                     start_flag = 1;
@@ -279,6 +311,9 @@ public class TimerActivity extends AppCompatActivity {
                             sb.setTextColor(0xFFFF8400);
                         }else if(conferenceMode == 2) {
                             sb = findViewById(R.id.button_mode3);
+                            sb.setTextColor(0xFFFF8400);
+                        }else if(conferenceMode == 3){
+                            sb = findViewById(R.id.button_mode4);
                             sb.setTextColor(0xFFFF8400);
                         }
                         try{
@@ -559,8 +594,9 @@ public class TimerActivity extends AppCompatActivity {
 
     void ModeLights(int color) throws IOException{
         if(color == 0)  json = "{\"on\":true,\"bri\":254,\"hue\":41432,\"sat\":75}";
-        else if(color == 1) json = "{\"on\":true,\"bri\":254,\"hue\":7856,\"sat\":188}";
+        else if(color == 1) json = "{\"on\":true,\"bri\":254,\"hue\":9000,\"sat\":100}";
         else if(color == 2)  json = "{\"on\":true,\"bri\":53,\"hue\":8504,\"sat\":130}";
+        else if(color == 3)json = "{\"on\":true,\"bri\":254,\"hue\":7856,\"sat\":188}";
         else json = "{\"on\":true,\"bri\":254,\"hue\":7856,\"sat\":188}";
         postTest();
     }

@@ -20,11 +20,12 @@ import java.util.TimerTask;
 public class SpecialActivity extends AppCompatActivity {
 
     String url = "http://192.168.1.38/api/p1SV3amWQL4aQF9tPJdJ4vOBqSwzK3iFH1gwENrI/lights/";
+    //    String url = "http://172.20.11.100/api/z2YrJsBIMyPZlHWprsFmIjlfI2WaR9kxTHA6XVaI/groups/1/action";
     String json;
     private String res = "";
     int random;
     int tmp = 0;
-    long interval = 3000;
+    long interval = 1500;
 
     private Timer timer;
 
@@ -54,7 +55,6 @@ public class SpecialActivity extends AppCompatActivity {
                             @Override
                             public void run()
                             {
-                                Log.i("aaaaaaaaaaaaaaa", "Task called.");
                                 changeColor();
                             }
                         }, 0, interval);
@@ -67,8 +67,6 @@ public class SpecialActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 timer.cancel();
-                baseColor();
-                Log.i("aaaaaaaaaaaaaaaa", "Timer canceld.");
                 timer = new Timer();
             }
         });

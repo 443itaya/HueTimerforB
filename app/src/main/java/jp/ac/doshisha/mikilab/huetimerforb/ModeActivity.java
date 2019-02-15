@@ -243,6 +243,7 @@ public class ModeActivity extends AppCompatActivity {
         if (index == 0) tmp = R.id.radioButton;
         else if (index == 1) tmp = R.id.radioButton2;
         else if (index == 2) tmp = R.id.radioButton3;
+        else if (index == 3) tmp = R.id.radioButton4;
         return tmp;
     }
     int IdToIndex(int id){
@@ -250,6 +251,7 @@ public class ModeActivity extends AppCompatActivity {
         if (id == R.id.radioButton) index = 0;
         else if (id == R.id.radioButton2) index = 1;
         else if (id == R.id.radioButton3) index = 2;
+        else if (id == R.id.radioButton4) index = 3;
         return index;
     }
 

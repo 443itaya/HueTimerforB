@@ -114,22 +114,23 @@
             android:background="@android:color/transparent" android:textColor="@android:color/white"
             android:onClick="onButtonClick"/>
     <Button
-            android:text="Thinking"
+            android:text="Imagination"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/button_mode2"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp"
             app:layout_constraintStart_toEndOf="@+id/button_mode1"
-            app:layout_constraintEnd_toStartOf="@+id/button_mode3" android:textSize="30sp"
+            android:textSize="30sp"
             android:textColor="@android:color/white" android:background="@android:color/transparent"
-            android:onClick="onButtonClick"/>
+            android:onClick="onButtonClick" app:layout_constraintEnd_toStartOf="@+id/button_mode4"
+            android:layout_marginEnd="8dp"/>
     <Button
             android:text="Presentation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/button_mode3"
             app:layout_constraintTop_toTopOf="@+id/button_mode2"
-            app:layout_constraintStart_toEndOf="@+id/button_mode2" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@+id/button_mode4"
             android:textSize="30sp" app:layout_constraintEnd_toStartOf="@+id/off_button" android:layout_marginEnd="8dp"
             android:background="@android:color/transparent" android:textColor="@android:color/white"
             android:onClick="onButtonClick"/>
@@ -142,6 +143,16 @@
             app:layout_constraintStart_toEndOf="@+id/button_mode3" app:layout_constraintTop_toTopOf="@+id/button_mode3"
             android:textSize="30sp" android:textColor="@android:color/white"
             android:background="@android:color/transparent" android:onClick="onButtonClick"/>
+    <Button
+            android:text="Relaxation"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:id="@+id/button_mode4"
+            app:layout_constraintTop_toTopOf="@+id/button_mode3"
+            android:textSize="30sp" android:textColor="@android:color/white"
+            android:background="@android:color/transparent" android:onClick="onButtonClick"
+            app:layout_constraintStart_toEndOf="@+id/button_mode2"
+            app:layout_constraintEnd_toStartOf="@+id/button_mode3" android:layout_marginEnd="8dp"/>
 
 
 </android.support.constraint.ConstraintLayout>

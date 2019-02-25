@@ -20,6 +20,7 @@ import java.util.TimerTask;
 public class SpecialActivity extends AppCompatActivity {
 
     String url = "http://192.168.1.38/api/p1SV3amWQL4aQF9tPJdJ4vOBqSwzK3iFH1gwENrI/lights/";
+    String urlGroups = "http://192.168.1.38/api/p1SV3amWQL4aQF9tPJdJ4vOBqSwzK3iFH1gwENrI/groups/1/action";
     //    String url = "http://172.20.11.100/api/z2YrJsBIMyPZlHWprsFmIjlfI2WaR9kxTHA6XVaI/groups/1/action";
     String json;
     private String res = "";
@@ -134,6 +135,8 @@ public class SpecialActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle arrow click here
         if (item.getItemId() == android.R.id.home) {
+            json = "{\"on\":false}";
+            postTest(0);
             Intent intent = new Intent(this, MainActivity.class);
             setResult(RESULT_OK, intent);
             finish(); // close this activity and return to preview activity (if there is any)
@@ -145,11 +148,19 @@ public class SpecialActivity extends AppCompatActivity {
     public void postTest(int num) {
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
         RequestBody body = RequestBody.create(JSON, json);
+        Request request;
 
-        Request request = new Request.Builder()
-                .url(url+num+"/state")
-                .put(body)
-                .build();
+        if(num == 0){
+            request = new Request.Builder()
+                    .url(urlGroups)
+                    .put(body)
+                    .build();
+        }else {
+           request = new Request.Builder()
+                    .url(url + num + "/state")
+                    .put(body)
+                    .build();
+        }
 
         OkHttpClient client = new OkHttpClient();
         client.newCall(request).enqueue(new Callback() {

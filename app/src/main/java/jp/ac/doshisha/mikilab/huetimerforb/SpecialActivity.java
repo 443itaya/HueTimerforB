@@ -21,7 +21,8 @@ public class SpecialActivity extends AppCompatActivity {
 
     String url = "http://192.168.1.38/api/p1SV3amWQL4aQF9tPJdJ4vOBqSwzK3iFH1gwENrI/lights/";
     String urlGroups = "http://192.168.1.38/api/p1SV3amWQL4aQF9tPJdJ4vOBqSwzK3iFH1gwENrI/groups/1/action";
-    //    String url = "http://172.20.11.100/api/z2YrJsBIMyPZlHWprsFmIjlfI2WaR9kxTHA6XVaI/groups/1/action";
+//    String url = "http://172.20.11.100/api/z2YrJsBIMyPZlHWprsFmIjlfI2WaR9kxTHA6XVaI/lights/";
+//    String urlGroups = "http://172.20.11.100/api/z2YrJsBIMyPZlHWprsFmIjlfI2WaR9kxTHA6XVaI/groups/1/action";
     String json;
     private String res = "";
     int random;
@@ -73,9 +74,20 @@ public class SpecialActivity extends AppCompatActivity {
         });
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Nav barの非表示化
+        View decor = this.getWindow().getDecorView();
+        decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+    }
+
     public void baseColor(){
-        for(int i = 1; i < 16; i++) {
-            if(i % 5 == 0) {
+        for (int i = 1; i < 16; i++) {
+            if (i % 5 == 0) {
                 json = "{\"on\":true,\"hue\":0,\"bri\":254,\"sat\":254}";
                 postTest(i);
             }
@@ -150,7 +162,7 @@ public class SpecialActivity extends AppCompatActivity {
         RequestBody body = RequestBody.create(JSON, json);
         Request request;
 
-        if(num == 0){
+        if (num == 0){
             request = new Request.Builder()
                     .url(urlGroups)
                     .put(body)

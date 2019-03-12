@@ -147,7 +147,7 @@ public class SpecialActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle arrow click here
         if (item.getItemId() == android.R.id.home) {
-            json = "{\"on\":false}";
+            json = "{\"on\":true,\"bri\":254,\"hue\":9000,\"sat\":100}";
             postTest(0);
             Intent intent = new Intent(this, MainActivity.class);
             setResult(RESULT_OK, intent);

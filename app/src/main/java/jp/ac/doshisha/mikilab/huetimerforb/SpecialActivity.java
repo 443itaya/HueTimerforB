@@ -19,10 +19,15 @@ import java.util.TimerTask;
 
 public class SpecialActivity extends AppCompatActivity {
 
-    String url = "http://192.168.1.38/api/p1SV3amWQL4aQF9tPJdJ4vOBqSwzK3iFH1gwENrI/lights/";
-    String urlGroups = "http://192.168.1.38/api/p1SV3amWQL4aQF9tPJdJ4vOBqSwzK3iFH1gwENrI/groups/1/action";
-//    String url = "http://172.20.11.100/api/z2YrJsBIMyPZlHWprsFmIjlfI2WaR9kxTHA6XVaI/lights/";
-//    String urlGroups = "http://172.20.11.100/api/z2YrJsBIMyPZlHWprsFmIjlfI2WaR9kxTHA6XVaI/groups/1/action";
+    //プロジェクトB用（本番）
+//    String url = "http://192.168.1.38/api/p1SV3amWQL4aQF9tPJdJ4vOBqSwzK3iFH1gwENrI/lights/";
+//    String urlGroups = "http://192.168.1.38/api/p1SV3amWQL4aQF9tPJdJ4vOBqSwzK3iFH1gwENrI/groups/1/action";
+
+    //コモン用
+    String url = "http://172.20.11.100/api/z2YrJsBIMyPZlHWprsFmIjlfI2WaR9kxTHA6XVaI/lights/";
+    String urlGroups = "http://172.20.11.100/api/z2YrJsBIMyPZlHWprsFmIjlfI2WaR9kxTHA6XVaI/groups/1/action";
+
+
     String json;
     private String res = "";
     int random;
@@ -86,7 +91,12 @@ public class SpecialActivity extends AppCompatActivity {
     }
 
     public void baseColor(){
-        for (int i = 1; i < 16; i++) {
+
+        //プロジェクトB用
+//        for (int i = 1; i < 16; i++) {
+
+        //コモン用
+        for (int i = 1; i < 30; i++) {
             if (i % 5 == 0) {
                 json = "{\"on\":true,\"hue\":0,\"bri\":254,\"sat\":254}";
                 postTest(i);
@@ -113,7 +123,12 @@ public class SpecialActivity extends AppCompatActivity {
     public void changeColor() {
         random = (int) (Math.random() * 5);
         if (random == tmp) random += 1;
-        for (int i = 1; i < 16; i++) {
+
+        //プロジェクトB用
+//        for (int i = 1; i < 16; i++) {
+
+        //コモン用
+        for (int i = 1; i < 30; i++) {
             if (i % 5 == random) {
                 json = "{\"on\":true,\"hue\":0,\"bri\":254,\"sat\":254}";
                 postTest(i);

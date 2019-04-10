@@ -31,9 +31,14 @@ public class TimerActivity extends AppCompatActivity {
     int hue_index;
     int conferenceMode;
 
-    String url = "http://192.168.1.38/api/p1SV3amWQL4aQF9tPJdJ4vOBqSwzK3iFH1gwENrI/groups/1/action";
+    //プロジェクトB用（本番）
+//    String url = "http://192.168.1.38/api/p1SV3amWQL4aQF9tPJdJ4vOBqSwzK3iFH1gwENrI/groups/1/action";
+
+    //プロジェクトB用（壊れてたブリッジ）
 //    String url = "http://192.168.1.38/api/v9Si5xeEsNFFPxGbkkGLkC7Bo6eajagN2JdKeTx7/groups/1/action";
-//    String url = "http://172.20.11.100/api/z2YrJsBIMyPZlHWprsFmIjlfI2WaR9kxTHA6XVaI/groups/1/action";
+
+    //コモン用
+    String url = "http://172.20.11.100/api/z2YrJsBIMyPZlHWprsFmIjlfI2WaR9kxTHA6XVaI/groups/1/action";
 
     private static final int REQUESTCODE_TEST1 = 1;
     private static final int REQUESTCODE_TEST = 2;
